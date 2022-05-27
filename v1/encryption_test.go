@@ -1,4 +1,4 @@
-package cbc
+package v1
 
 import (
 	"fmt"
