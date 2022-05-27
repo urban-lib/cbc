@@ -5,7 +5,6 @@ import (
 	"crypto/aes"
 	"crypto/cipher"
 	"crypto/rand"
-	"encoding/base64"
 	"fmt"
 	"io"
 )
@@ -66,26 +65,4 @@ func aesCBCDecrypt(encryptData, key []byte) ([]byte, error) {
 	mode.CryptBlocks(encryptData, encryptData)
 	encryptData = unPadding(encryptData)
 	return encryptData, nil
-}
-
-// Encrypt encryption message. len(key) == 32
-func Encrypt(message, key []byte) (string, error) {
-	data, err := aesCBCEncrypt(message, key)
-	if err != nil {
-		return "", err
-	}
-	return base64.StdEncoding.EncodeToString(data), nil
-}
-
-// Decrypt decryption message. len(key) == 32
-func Decrypt(message string, key []byte) (string, error) {
-	data, err := base64.StdEncoding.DecodeString(message)
-	if err != nil {
-		return "", err
-	}
-	dnData, err := aesCBCDecrypt(data, key)
-	if err != nil {
-		return "", err
-	}
-	return string(dnData), nil
 }
