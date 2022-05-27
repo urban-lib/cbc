@@ -1,5 +1,5 @@
 module github.com/urban-lib/cbc
 
-go 1.16
+go 1.18
 
 require github.com/stretchr/testify v1.7.0 // indirect
