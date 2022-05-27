@@ -1,4 +1,4 @@
-module github.com/urban-lib/cbc
+module github.com/urban-lib/cbc/v1
 
 go 1.18
 
